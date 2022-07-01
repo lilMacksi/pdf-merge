@@ -14,25 +14,10 @@ export default async function merge(files) {
 
 export async function loadDocument(file) {
     const doc = await PDFDocument.load(file);
-    console.log(doc)
     return await doc.save();
 }
 
 export async function download(bytes, name) {
-        /*
-        NATIVE IMPLEMENTATION (unfortunately rather slow)
-        const opts = {
-            types: [{
-                description: 'PDF file',
-                accept: {'application/pdf': ['.pdf']},
-            }],
-            suggestedName: name
-        };
-        const handle = await window.showSaveFilePicker(opts);
-        const stream = await handle.createWritable();
-        await stream.write(new Blob([bytes]));
-        await stream.close();
-        return new Promise((res) => res(true));*/
-        const blob = new Blob([bytes]);
-        FileSaver.saveAs(blob, `${name}.pdf`)
+    const blob = new Blob([bytes]);
+    FileSaver.saveAs(blob, `${name}.pdf`)
 }
