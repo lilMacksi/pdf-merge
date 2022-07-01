@@ -6,8 +6,6 @@ import VueTransmit from "vue-transmit"
 Vue.config.productionTip = false
 Vue.config.ignoredElements = [/sdx-.+/];
 
-defineCustomElements();
-
 Vue.use(VueTransmit)
 
 new Vue({
