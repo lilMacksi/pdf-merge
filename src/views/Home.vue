@@ -60,7 +60,6 @@
 import merge, {download, loadDocument} from "@/js/pdf";
 import draggable from 'vuedraggable'
 import pdf from "vue-pdf";
-import {showOnHeader} from "@swisscom/sdx/dist/es6/notification/Notification";
 import FileUpload from "@/components/FileUpload";
 
 export default {
@@ -83,10 +82,6 @@ export default {
     };
   },
   methods: {
-    showNotification(text) {
-      const notification = showOnHeader("top-nav", text, null, null, 'notification--alert' );
-      setTimeout(function(){ notification.close() }, 20000);
-    },
     onNameChange(v) {
       this.name = v;
     },
@@ -140,7 +135,6 @@ export default {
         this.loading = false;
       } catch (e) {
         this.loading = false;
-        this.showNotification(e.message)
       }
     },
     async fileRead(files) {
